@@ -4,7 +4,8 @@
   "description": "Turn pages grayscale with a single click.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "web-ext lint --source-dir=src",
+    "build": "web-ext build --source-dir=src --artifacts-dir=artifacts"
   },
   "repository": {
     "type": "git",
