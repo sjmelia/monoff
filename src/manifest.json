@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Grayscale Mode",
+  "name": "Monoff",
   "version": "1.0",
   "description": "Turn web pages grayscale with a single click",
   "permissions": [

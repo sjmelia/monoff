@@ -1,0 +1,24 @@
+{
+  "name": "monoff",
+  "version": "1.0.0",
+  "description": "Turn pages grayscale with a single click.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sjmelia/monoff.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sjmelia/monoff/issues"
+  },
+  "homepage": "https://github.com/sjmelia/monoff#readme",
+  "devDependencies": {
+    "web-ext": "^10.2.0"
+  }
+}
