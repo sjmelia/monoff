@@ -1,4 +1,4 @@
-name: Firefox extension
+name: Browser extension
 
 on:
   push:
@@ -26,18 +26,27 @@ jobs:
 
       - run: npm ci
 
-      - name: Lint extension
+      - name: Typecheck extension
         run: npm run lint
 
-      - name: Build unsigned package
+      - name: Build unpacked extensions
         run: npm run build
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Generate store screenshots
+        run: npm run screenshots
+
+      - name: Zip release packages
+        run: npm run zip
 
       - name: Sign unlisted extension
         if: github.event_name == 'workflow_dispatch' && inputs.sign_unlisted
         run: |
           npx web-ext sign \
-            --source-dir=src \
-            --artifacts-dir=artifacts \
+            --source-dir=dist/firefox-mv3 \
+            --artifacts-dir=dist/artifacts \
             --channel=unlisted \
             --api-key="$AMO_JWT_ISSUER" \
             --api-secret="$AMO_JWT_SECRET"
@@ -48,6 +57,9 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: firefox-extension
-          path: artifacts/*
+          name: browser-extension
+          path: |
+            dist/*.zip
+            dist/screenshots/*.png
+            dist/artifacts/*
           retention-days: 14

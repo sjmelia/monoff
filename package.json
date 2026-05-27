@@ -1,11 +1,20 @@
 {
   "name": "monoff",
   "version": "1.0.0",
-  "description": "Turn pages grayscale with a single click.",
-  "main": "index.js",
+  "description": "Render pages in grayscale.",
+  "type": "module",
   "scripts": {
-    "lint": "web-ext lint --source-dir=src",
-    "build": "web-ext build --source-dir=src --artifacts-dir=artifacts"
+    "icons": "node scripts/generate-icons.js",
+    "dev": "npm run icons && wxt",
+    "dev:firefox": "npm run icons && wxt -b firefox",
+    "dev:chrome": "npm run icons && wxt -b chrome",
+    "compile": "npm run icons && wxt prepare && tsc --noEmit",
+    "lint": "npm run compile",
+    "build": "npm run icons && wxt build -b firefox && wxt build -b chrome",
+    "screenshots": "node scripts/generate-screenshots.js",
+    "zip": "npm run icons && wxt zip -b firefox && wxt zip -b chrome",
+    "zip:firefox": "npm run icons && wxt zip -b firefox",
+    "zip:chrome": "npm run icons && wxt zip -b chrome"
   },
   "repository": {
     "type": "git",
@@ -14,12 +23,15 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/sjmelia/monoff/issues"
   },
   "homepage": "https://github.com/sjmelia/monoff#readme",
   "devDependencies": {
-    "web-ext": "^10.2.0"
+    "@playwright/test": "^1.60.0",
+    "sharp": "^0.34.5",
+    "typescript": "^6.0.3",
+    "web-ext": "^10.2.0",
+    "wxt": "^0.20.26"
   }
 }
