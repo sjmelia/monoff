@@ -1,0 +1,31 @@
+{
+  "name": {
+    "en-US": "Monoff"
+  },
+  "summary": {
+    "en-US": "Render web pages in grayscale."
+  },
+  "description": {
+    "en-US": "Monoff is a small browser extension that renders web pages in grayscale.\n\nIt is intentionally simple: there is no popup, no in-extension toggle, no per-site configuration, no schedules, and no intensity slider. To turn the effect off, disable the extension from your browser's extension manager.\n\nMonoff also includes a minimal new tab page that displays the current time."
+  },
+  "categories": [
+    "other"
+  ],
+  "tags": [
+    "grayscale",
+    "monochrome",
+    "minimal"
+  ],
+  "homepage": {
+    "en-US": "https://github.com/sjmelia/monoff"
+  },
+  "support_url": {
+    "en-US": "https://github.com/sjmelia/monoff/issues"
+  },
+  "version": {
+    "license": "all-rights-reserved",
+    "release_notes": {
+      "en-US": "Initial listed release."
+    }
+  }
+}

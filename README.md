@@ -32,6 +32,7 @@ npm run dev:chrome
 - `scripts/generate-screenshots.js`: creates store screenshots.
 - `screenshots/sample-page.html`: local screenshot fixture.
 - `docs/store-listing.md`: store listing copy.
+- `store/amo-metadata.json`: AMO metadata used for listed submissions.
 
 ## Permissions
 
@@ -66,6 +67,8 @@ Generated outputs include:
 - `dist/monoff-1.0.0-chrome.zip`
 
 The GitHub Actions workflow typechecks, builds, generates screenshots, and zips both browser packages. It can also sign an unlisted Firefox package when run manually with `AMO_JWT_ISSUER` and `AMO_JWT_SECRET` repository secrets configured.
+
+Tag releases named `vX.Y.Z` submit the Firefox build as a listed AMO version and create a GitHub release. The tag version must match `package.json`. Listed AMO submissions may not appear publicly until Mozilla review completes.
 
 ## Screenshots
 
