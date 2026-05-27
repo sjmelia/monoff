@@ -68,7 +68,7 @@ Generated outputs include:
 
 The GitHub Actions workflow typechecks, builds, generates screenshots, and zips both browser packages. It can also sign an unlisted Firefox package when run manually with `AMO_JWT_ISSUER` and `AMO_JWT_SECRET` repository secrets configured.
 
-Tag releases named `vX.Y.Z` submit the Firefox build as a listed AMO version and create a GitHub release. The tag version must match `package.json`. Listed AMO submissions may not appear publicly until Mozilla review completes.
+Publishing a GitHub Release from the UI with a tag named `vX.Y.Z` submits the Firefox build as a listed AMO version and attaches release artifacts. The release tag version must match `package.json`. Listed AMO submissions may not appear publicly until Mozilla review completes.
 
 ## Screenshots
 
