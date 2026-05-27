@@ -88,7 +88,8 @@ jobs:
             --amo-metadata=store/amo-metadata.json \
             --upload-source-code=dist/monoff-${VERSION}-sources.zip \
             --api-key="$AMO_JWT_ISSUER" \
-            --api-secret="$AMO_JWT_SECRET"
+            --api-secret="$AMO_JWT_SECRET" \
+            --approval-timeout 0
         env:
           AMO_JWT_ISSUER: ${{ secrets.AMO_JWT_ISSUER }}
           AMO_JWT_SECRET: ${{ secrets.AMO_JWT_SECRET }}
