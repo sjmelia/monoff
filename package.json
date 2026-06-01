@@ -4,17 +4,17 @@
   "description": "Render pages in grayscale.",
   "type": "module",
   "scripts": {
-    "icons": "node scripts/generate-icons.js",
-    "dev": "npm run icons && wxt",
-    "dev:firefox": "npm run icons && wxt -b firefox",
-    "dev:chrome": "npm run icons && wxt -b chrome",
-    "compile": "npm run icons && wxt prepare && tsc --noEmit",
+    "icons": "node tools/generate-icons.js",
+    "screenshots": "node tools/generate-screenshots.js",
+    "dev": "wxt",
+    "dev:firefox": "wxt -b firefox",
+    "dev:chrome": "wxt -b chrome",
+    "compile": "wxt prepare && tsc --noEmit",
     "lint": "npm run compile",
-    "build": "npm run icons && wxt build -b firefox && wxt build -b chrome",
-    "screenshots": "node scripts/generate-screenshots.js",
-    "zip": "npm run icons && wxt zip -b firefox && wxt zip -b chrome",
-    "zip:firefox": "npm run icons && wxt zip -b firefox",
-    "zip:chrome": "npm run icons && wxt zip -b chrome"
+    "build": "wxt build -b firefox && wxt build -b chrome",
+    "zip": "wxt zip -b firefox && wxt zip -b chrome",
+    "zip:firefox": "wxt zip -b firefox",
+    "zip:chrome": "wxt zip -b chrome"
   },
   "repository": {
     "type": "git",

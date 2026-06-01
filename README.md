@@ -1,6 +1,6 @@
-# Monoff
+# Monoff – Make pages monochrome
 
-Monoff is a small WebExtension that renders web pages in grayscale. It also includes a quiet new tab page that shows the current time.
+Monoff is a small WebExtension that renders web pages in grayscale.
 
 There is no popup, toggle, per-site setting, schedule, or intensity slider. To turn the effect off, disable the extension from the browser's extension manager.
 
@@ -25,14 +25,41 @@ npm run dev:chrome
 
 - `wxt.config.ts`: manifest metadata and CSS content script registration.
 - `src/entrypoints/grayscale.content.css`: grayscale stylesheet.
-- `src/entrypoints/newtab/`: clock-only new tab page.
 - `public/icon.svg`: editable source icon.
-- `public/icon-*.png`: generated extension icons.
-- `scripts/generate-icons.js`: regenerates PNG icons.
-- `scripts/generate-screenshots.js`: creates store screenshots.
-- `screenshots/sample-page.html`: local screenshot fixture.
+- `public/icon-*.png`: generated extension icons (committed, regenerate with `npm run icons`).
+- `tools/generate-icons.js`: regenerates PNG icons from the SVG source.
+- `tools/generate-screenshots.js`: captures store screenshots.
+- `screenshots/sample-page.html`: local fixture used by the screenshot tool.
+- `screenshots/*.png`: committed store screenshots.
 - `docs/store-listing.md`: store listing copy.
 - `store/amo-metadata.json`: AMO metadata used for listed submissions.
+
+## Tools
+
+Two one-off tools live in `tools/` and produce committed output. Run them manually when their inputs change, review the output, then commit.
+
+### Icons
+
+Regenerates `public/icon-*.png` from `public/icon.svg`:
+
+```sh
+npm run icons
+```
+
+### Screenshots
+
+Captures store screenshots into `screenshots/`. Requires a Chrome build in `dist/chrome-mv3/`:
+
+```sh
+npm run build
+npm run screenshots
+```
+
+Generated screenshots:
+
+- `screenshots/sample-page-grayscale.png`
+- `screenshots/wikipedia-grayscale.png`
+- `screenshots/bbc-article-grayscale.png`
 
 ## Permissions
 
@@ -48,7 +75,6 @@ WXT writes unpacked builds and zip packages to `dist/`.
 
 ```sh
 npm run build
-npm run screenshots
 npm run zip
 ```
 
@@ -66,23 +92,9 @@ Generated outputs include:
 - `dist/monoff-1.0.0-firefox.zip`
 - `dist/monoff-1.0.0-chrome.zip`
 
-The GitHub Actions workflow typechecks, builds, generates screenshots, and zips both browser packages. It can also sign an unlisted Firefox package when run manually with `AMO_JWT_ISSUER` and `AMO_JWT_SECRET` repository secrets configured.
+The GitHub Actions workflow typechecks, builds, and zips both browser packages. It can also sign an unlisted Firefox package when run manually with `AMO_JWT_ISSUER` and `AMO_JWT_SECRET` repository secrets configured.
 
 Publishing a GitHub Release from the UI with a tag named `vX.Y.Z` submits the Firefox build as a listed AMO version and attaches release artifacts. The release tag version must match `package.json`. Listed AMO submissions may not appear publicly until Mozilla review completes.
-
-## Screenshots
-
-Screenshots are generated from local, stable pages instead of live news sites. This avoids changing headlines, ads, cookie prompts, regional layouts, and third-party scripts.
-
-```sh
-npm run build
-npm run screenshots
-```
-
-Generated screenshots:
-
-- `dist/screenshots/sample-page-grayscale.png`
-- `dist/screenshots/newtab-clock.png`
 
 ## Dependency Updates
 

@@ -1,5 +1,5 @@
 import { createServer } from "node:http";
-import { readFile, mkdir } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -8,9 +8,8 @@ import { chromium } from "@playwright/test";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
 const extensionDir = path.join(root, "dist", "chrome-mv3");
-const screenshotsDir = path.join(root, "dist", "screenshots");
+const screenshotsDir = path.join(root, "screenshots");
 const fixturePath = path.join(root, "screenshots", "sample-page.html");
-const newtabPath = path.join(extensionDir, "newtab.html");
 const grayscalePath = path.join(extensionDir, "content-scripts", "grayscale.css");
 
 /** @param {string} filePath */
@@ -59,12 +58,8 @@ function createStaticServer(routes) {
 }
 
 async function main() {
-  await mkdir(screenshotsDir, { recursive: true });
-
   const routes = new Map([
     ["/sample-page.html", fixturePath],
-    ["/newtab.html", newtabPath],
-    ["/content-scripts/grayscale.css", grayscalePath]
   ]);
 
   const { server, origin } = await createStaticServer(routes);
@@ -73,6 +68,7 @@ async function main() {
 
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 960 } });
+
     await page.goto(`${origin}/sample-page.html`);
     await page.addStyleTag({ path: grayscalePath });
     await page.screenshot({
@@ -80,11 +76,16 @@ async function main() {
       fullPage: true
     });
 
-    await page.goto(`${origin}/newtab.html`);
-    await page.waitForFunction(() => document.getElementById("time")?.textContent?.trim());
+    await page.goto("https://en.wikipedia.org/wiki/Parrot", { waitUntil: "networkidle" });
+    await page.addStyleTag({ path: grayscalePath });
     await page.screenshot({
-      path: path.join(screenshotsDir, "newtab-clock.png"),
-      fullPage: true
+      path: path.join(screenshotsDir, "wikipedia-grayscale.png"),
+    });
+
+    await page.goto("https://www.bbc.com/future/article/20140721-why-blue-is-the-worlds-favourite-colour", { waitUntil: "networkidle" });
+    await page.addStyleTag({ path: grayscalePath });
+    await page.screenshot({
+      path: path.join(screenshotsDir, "bbc-article-grayscale.png"),
     });
   } finally {
     await browser.close();

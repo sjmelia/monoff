@@ -4,24 +4,23 @@ Use this as the source copy for Mozilla Add-ons, Chrome Web Store, release notes
 
 ## Name
 
-Monoff
+Monoff – Make pages monochrome
 
 ## Short Summary
 
-Render web pages in grayscale.
+Make any web page monochrome. No scripts on pages, no data collected, no configuration needed.
 
 ## Full Description
 
-Monoff is a small browser extension that renders web pages in grayscale.
+Monoff renders every web page in grayscale, making the web calmer, less distracting, and easier on the eyes.
 
-It is intentionally simple: there is no popup, no in-extension toggle, no per-site configuration, no schedules, and no intensity slider. To turn the effect off, disable the extension from your browser's extension manager.
+It is intentionally minimal: there is no popup, no toggle, no per-site settings, no schedule, and no intensity slider. To turn the effect off, disable the extension from your browser's extension manager.
 
-Monoff also includes a minimal new tab page that displays the current time.
+Monoff works by injecting a static CSS stylesheet — no JavaScript runs on your pages. It requests only the access that any content stylesheet needs, collects no data, and sends nothing anywhere.
 
 ## Key Points
 
-- Applies a grayscale stylesheet to web pages.
-- Provides a quiet clock-only new tab page.
+- Applies a grayscale stylesheet to every web page.
 - Does not request extension API permissions such as storage, scripting, active tab access, alarms, or commands.
 - Does not collect, transmit, sell, or share user data.
 - Uses a static CSS content script rather than JavaScript running on pages.
@@ -47,14 +46,14 @@ Firefox data collection declaration:
 ## Screenshot Captions
 
 - `sample-page-grayscale.png`: Monoff rendering a sample article page in grayscale.
-- `newtab-clock.png`: The minimal Monoff new tab page with the current time.
+- `wikipedia-grayscale.png`: Monoff rendering the Wikipedia article on Parrots in grayscale.
+- `bbc-article-grayscale.png`: Monoff rendering a BBC Future article in grayscale.
 
 ## Release Notes
 
 Initial release:
 
 - Render web pages in grayscale.
-- Add a minimal clock-only new tab page.
 - Support Firefox and Chrome builds through WXT.
 - Use generated PNG icons from a single SVG source.
 

@@ -1,12 +1,12 @@
 {
   "name": {
-    "en-US": "Monoff"
+    "en-US": "Monoff – Make pages monochrome"
   },
   "summary": {
-    "en-US": "Render web pages in grayscale."
+    "en-US": "Make any web page monochrome. No scripts on pages, no data collected, no configuration needed."
   },
   "description": {
-    "en-US": "Monoff is a small browser extension that renders web pages in grayscale.\n\nIt is intentionally simple: there is no popup, no in-extension toggle, no per-site configuration, no schedules, and no intensity slider. To turn the effect off, disable the extension from your browser's extension manager.\n\nMonoff also includes a minimal new tab page that displays the current time."
+    "en-US": "Monoff renders every web page in grayscale, making the web calmer, less distracting, and easier on the eyes.\n\nIt is intentionally minimal: there is no popup, no toggle, no per-site settings, no schedule, and no intensity slider. To turn the effect off, disable the extension from your browser's extension manager.\n\nMonoff works by injecting a static CSS stylesheet — no JavaScript runs on your pages. It requests only the access that any content stylesheet needs, collects no data, and sends nothing anywhere."
   },
   "categories": [
     "other"

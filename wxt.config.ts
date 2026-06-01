@@ -5,8 +5,8 @@ export default defineConfig({
   outDir: "dist",
   manifestVersion: 3,
   manifest: ({ browser }) => ({
-    name: "Monoff",
-    description: "Render web pages in grayscale",
+    name: "Monoff – Make pages monochrome",
+    description: "Make any web page monochrome. No scripts on pages, no data collected, no configuration needed.",
     action: {
       default_title: "Grayscale Mode"
     },
