@@ -24,7 +24,7 @@ jobs:
       AMO_ADDON_URL: https://addons.mozilla.org/firefox/addon/monoff/
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v6
         with:
