@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/sjmelia/monoff#readme",
   "devDependencies": {
-    "@playwright/test": "^1.60.0",
+    "@playwright/test": "^1.61.1",
     "sharp": "^0.34.5",
     "typescript": "^6.0.3",
     "web-ext": "^10.4.0",
